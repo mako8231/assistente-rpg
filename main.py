@@ -1,7 +1,8 @@
+from ast import arg
 from os import close
-import discord
 import os.path
 import json
+import client 
 
 filename = "config.json"
 
@@ -20,13 +21,6 @@ json_parsed = json.loads(conf_str[0])
 
 cli = json_parsed["token"]
 
+client.connection_client(cli)
 
-class MyClient(discord.Client):
-    async def on_ready(self):
-        print('Logged on as {0}!'.format(self.user))
 
-    async def on_message(self, message):
-        print('Message from {0.author}: {0.content}'.format(message))
-
-client = MyClient()
-client.run(cli)    
